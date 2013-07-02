@@ -9,7 +9,7 @@
 @import 'font-awesome';
 
 $bgColor: #D3360B;
-$containerWidth: 940px;
+$containerWidth: 960px;
 
 #main-nav {
   .navbar-inner {
@@ -23,7 +23,7 @@ $containerWidth: 940px;
         display: block;
         width: 200px;
         height: 30px;
-        background: url('/assets/railsgirls-logo.png') no-repeat;
+        background: image-url('railsgirls-logo.png') no-repeat;
         background-position: center;
         margin-right: 50px;
       }
@@ -41,7 +41,7 @@ $containerWidth: 940px;
 
           &:after {
             margin-left: 15px;
-            content: url(/assets/star.png);
+            content: image-url('star.png');
           }
         }
 

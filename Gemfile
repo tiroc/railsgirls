@@ -1,21 +1,47 @@
 source 'https://rubygems.org'
-ruby '1.9.3'
+ruby '2.0.0'
 
-gem 'rails', '~> 3.2.13'
+gem 'rails', '~> 4.0.0'
 
-group :production do
-  gem 'pg'
-end
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier'
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails'
+# Use SCSS for stylesheets
+gem 'sass-rails'
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks'
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder'
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+gem 'bootstrap-sass'
+gem 'bootstrap-sass-rails'
+gem 'jquery-ui-rails'
+gem 'font-awesome-rails'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
 
 gem 'settingslogic'
 gem 'rails-i18n'
 gem 'redcarpet'
-gem 'thin'
 gem 'redcarpet'
 gem 'omniauth'
 gem 'omniauth-identity'
-gem 'slim-rails', '~> 1.1.0'
+gem 'slim-rails'
 gem 'rails-i18n'
+
+
+group :production do
+  # heroku use PostgreSQL
+  gem 'pg'
+
+  # see https://devcenter.heroku.com/articles/rails-integration-gems
+  gem 'rails_12factor'
+
+  # heorku recommended, see https://devcenter.heroku.com/articles/rails4-getting-started
+  gem 'unicorn'
+end
 
 group :development do
   gem 'faker'
@@ -26,19 +52,10 @@ group :development do
   gem 'foreman'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'thin'
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'bootstrap-sass', '~> 2.3.1.0'
-  gem 'bootstrap-sass-rails'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'jquery-rails'
-  gem 'jquery-ui-rails'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'font-awesome-rails'
-  # gem 'therubyracer', :platforms => :ruby
-
-  gem 'uglifier', '>= 1.0.3'
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
 end

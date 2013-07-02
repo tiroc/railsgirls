@@ -11,6 +11,8 @@
 
   <%= stylesheet_link_tag 'application', :media => 'all' %>
   <%= csrf_meta_tags %>
+  <%= javascript_include_tag 'application' %>
+  <%= yield :js %>
 </head>
 <body>
 <div id="main-nav" class="navbar navbar-static-top">
@@ -48,12 +50,9 @@
     <p>
       Rails Girls China. Follow us on <a href="http://weibo.com/railsgirls" rel="nofollow" target="_blank">Weibo</a>.
       This site is under MIT license and the source code is
-      <a href="https://github.com/railsgirls-china/railsgirls" rel="nofollow" target="_blank">hereby</a>.
+      <a href="https://gitcafe.com/RailsGirls-China/railsgirls-china-site" rel="nofollow" target="_blank">hereby</a>.
     </p>
   </div>
 </footer>
-
-<%= javascript_include_tag 'application' %>
-<%= yield :js %>
 </body>
 </html>
