@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
-  before_filter :admin_required, :except => [:index, :show, :pair]
+  before_action :admin_required, :except => [:index, :show, :pair]
+  before_action :set_event, :only => [:show, :edit, :update, :destroy, :pair]
   layout 'application', :except => :show
   # GET /events
   # GET /events.json
@@ -15,8 +16,6 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = Event.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @event }
@@ -36,13 +35,12 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
   end
 
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(params[:event])
+    @event = Event.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -58,10 +56,8 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.json
   def update
-    @event = Event.find(params[:id])
-
     respond_to do |format|
-      if @event.update_attributes(params[:event])
+      if @event.update_attributes(event_params)
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { head :no_content }
       else
@@ -74,7 +70,6 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
 
     respond_to do |format|
@@ -84,7 +79,17 @@ class EventsController < ApplicationController
   end
 
   def pair
-    @result = Event.find(params[:id]).pair
+    @result = @event.pair
   end
 
+  private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_event
+    @event = Event.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def event_params
+    params.require(:event).permit(:title, :city, :map, :starts_at, :summary, :body)
+  end
 end

@@ -1,5 +1,5 @@
 class AdminController < ApplicationController
-  before_filter :admin_required
+  before_action :admin_required
 
   def index
     @events = Event.all

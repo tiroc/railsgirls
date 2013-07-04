@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_filter :logout_required, only: [:new]
+  before_action :logout_required, only: [:new]
 
   def new
   end
