@@ -7,7 +7,7 @@ class GirlsController < ApplicationController
   end
 
   def create
-    g = current_event.girls.build params[:girl] do |girl|
+    g = current_event.girls.build girl_params do |girl|
       girl.attended = true
     end
 
@@ -46,7 +46,7 @@ class GirlsController < ApplicationController
       end
 
       csv.each do |row|
-        current_event.girls.create :name => row[0], :email => row[6]
+        current_event.girls.create :name => row[0], :email => row[6], :mobile => row[5]
       end
 
       redirect_to event_girls_path(params[:event_id]),
@@ -57,5 +57,9 @@ class GirlsController < ApplicationController
   private
   def current_event
     Event.find(params[:event_id])
+  end
+
+  def girl_params
+    params.require(:girl).permit!
   end
 end

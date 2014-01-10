@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+ruby '2.1.0'
 
 gem 'rails', '~> 4.0.0'
 
@@ -15,8 +15,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-gem 'bootstrap-sass'
-gem 'bootstrap-sass-rails'
+gem 'bootstrap-sass-rails', '~> 2.3.2.0'
 gem 'jquery-ui-rails'
 gem 'font-awesome-rails'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes

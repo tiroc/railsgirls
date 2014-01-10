@@ -54,6 +54,8 @@ module RailsGirls
 
     config.i18n.available_locales = [:'zh-CN', :en]
 
+    I18n.enforce_available_locales = false
+
     config.assets.precompile += %w( caesar_dressing.woff permanent_marker.woff )
   end
 end

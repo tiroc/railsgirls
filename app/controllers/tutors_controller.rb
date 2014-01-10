@@ -6,7 +6,7 @@ class TutorsController < ApplicationController
   end
 
   def create
-    t = current_event.tutors.build params[:tutor] do |tutor|
+    t = current_event.tutors.build tutor_params do |tutor|
       tutor.attended = true
     end
 
@@ -22,5 +22,9 @@ class TutorsController < ApplicationController
   private
   def current_event
     Event.find(params[:event_id])
+  end
+
+  def tutor_params
+    params.require(:tutor).permit!
   end
 end

@@ -3,14 +3,17 @@
   <%= f.text_field :name %>
   <%= f.label :email %>
   <%= f.text_field :email %>
+  <%= f.label :mobile %>
+  <%= f.text_field :mobile %>
   <%= f.submit %>
 <% end %>
 
-<table>
+<table class="table">
   <thead>
   <tr>
     <th>昵称</th>
     <th>E-mail</th>
+    <th>手机</th>
     <th></th>
   </tr>
   </thead>
@@ -19,6 +22,7 @@
     <tr>
       <td><%= t.name %></td>
       <td><%= t.email %></td>
+      <td><%= t.mobile %></td>
       <td><%= link_to '签到', attend_event_girl_path(event_id: params[:event_id], id: t.id) unless t.attended? %></td>
     </tr>
   <% end %>
