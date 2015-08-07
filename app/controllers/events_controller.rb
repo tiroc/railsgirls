@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :admin_required, :except => [:index, :show, :pair]
+  before_action :admin_required, :except => [:index, :show]
   before_action :set_event, :only => [:show, :edit, :update, :destroy, :pair]
   layout 'application', :except => :show
   # GET /events
